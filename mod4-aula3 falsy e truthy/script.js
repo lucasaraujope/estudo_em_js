@@ -24,4 +24,4 @@ console.log(" " ? "VERDADEIRO":"FALSO");
 console.log("Lucas" ? "VERDADEIRO":"FALSO");
 console.log("False"? "VERDADEIRO":"FALSO");
 console.log(Infinity ? "VERDADEIRO":"FALSO");
-console.log(-1 ? "VERDADEIRO":"FALSO");
+console.log(-1 ? "VERDADEIRO":"FALSO"); 
