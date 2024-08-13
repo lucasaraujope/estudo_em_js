@@ -2,9 +2,11 @@ const USD = 5.50;
 const EUR = 6.01;
 const GBP = 7.02;
 
+//Obtendo os elementos do formulário
 const form = document.querySelector("form");
 const amount = document.getElementById("amount");
 const currency = document.getElementById("currency");
+const footer = document.querySelector("main footer");
 
 //manipulando o input amount para receber somente números
 amount.addEventListener("input", () =>{
@@ -14,7 +16,7 @@ amount.addEventListener("input", () =>{
 
     //atribuindo ao amount apenas valores númericos, pois estamso substituindo todos os caracteres recbidos pelo regez e ignorando eles
     amount.value = amount.value.replace(hasCaractersRegex, "");
-})
+});
 
 //capturando o valor que é gerado nas opções de moeda quando clicamos no botão do botão
 form.onsubmit = (event) => {
@@ -33,6 +35,16 @@ form.onsubmit = (event) => {
     }
 }
 
+//Função para converter a moeda
 function convertCurrency(amount, price, symbol){
-    console.log(amount, price, symbol)
+    try{
+        //aplica a classe que exibe o resultado da conversão na aplicação
+        footer.classList.add("show-result");
+    } catch(error){
+        //remove a classe que exibe o resultado da conversão na aplicação
+        footer.classList.remove("show-result");
+        
+        console.log(error);
+        alert("Não foi possível converter. Tente novamente mais tarde!")
+    }
 }
