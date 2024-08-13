@@ -1,3 +1,4 @@
+//Variáveis com valores atualizados da moedas estrangeiras
 const USD = 5.50;
 const EUR = 6.01;
 const GBP = 7.02;
@@ -40,19 +41,33 @@ form.onsubmit = (event) => {
 //Função para converter a moeda
 function convertCurrency(amount, price, symbol){
     try{
+        //altera o conteúdo do footer de forma dinâmica para utilizar os valores que utilizamos nas variávei do JS
         description.textContent = `${symbol} 1 = R$${formatCurrencyBRL(price)}`
+        
         //aplica a classe que exibe o resultado da conversão na aplicação
-
         footer.classList.add("show-result");
+        
+        //gera o valor total da conversão
+        let total = amount * price;
 
-        const convert = amount * price;
+        //validando se o valor digitado é um número
+        if(isNaN(total)){
+            return alert("Por favor, digite um número válido!")
+        }
+        
+        //formata o toal para o padrão BRL
+        total = formatCurrencyBRL(total).replace("R$", "")
 
-        result.textContent = `R$${convert.toFixed(2)}`;
+        //exibe o resultado total da conversão no padrão de moeda BRL
+        result.textContent = `${total} Reais`;
     } catch(error){
         //remove a classe que exibe o resultado da conversão na aplicação
         footer.classList.remove("show-result");
 
+        //exibe um erro no console para saber o que aconteceu
         console.log(error);
+        
+        //exibe um alerta de erro para o cliente que estiver usando a aplicação
         alert("Não foi possível converter. Tente novamente mais tarde!")
     }
 }
