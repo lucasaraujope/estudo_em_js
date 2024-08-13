@@ -1,4 +1,4 @@
-const USD = 5.49;
+const USD = 5.50;
 const EUR = 6.01;
 const GBP = 7.02;
 
@@ -8,6 +8,7 @@ const amount = document.getElementById("amount");
 const currency = document.getElementById("currency");
 const footer = document.querySelector("main footer");
 const description = document.getElementById("description");
+const result = document.getElementById("result");
 
 //manipulando o input amount para receber somente números
 amount.addEventListener("input", () =>{
@@ -39,9 +40,14 @@ form.onsubmit = (event) => {
 //Função para converter a moeda
 function convertCurrency(amount, price, symbol){
     try{
-        description.textContent = `${symbol} 1 = R$${price}`
+        description.textContent = `${symbol} 1 = R$${formatCurrencyBRL(price)}`
         //aplica a classe que exibe o resultado da conversão na aplicação
+
         footer.classList.add("show-result");
+
+        const convert = amount * price;
+
+        result.textContent = `R$${convert.toFixed(2)}`;
     } catch(error){
         //remove a classe que exibe o resultado da conversão na aplicação
         footer.classList.remove("show-result");
@@ -49,4 +55,13 @@ function convertCurrency(amount, price, symbol){
         console.log(error);
         alert("Não foi possível converter. Tente novamente mais tarde!")
     }
+}
+
+//formata a moeda para o padrão Real brasileiro
+function formatCurrencyBRL(value){
+    //convertendo para número para poder utilizar o toLocaleString para formatar para o padrão BRL
+    return  Number(value).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    })
 }
