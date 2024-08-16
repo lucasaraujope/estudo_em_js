@@ -1,0 +1,25 @@
+main {
+  margin-block: 4rem;
+
+  & a {
+    display: inline-block;
+    margin-bottom: 1rem;
+
+    span{
+        font: var(--link);
+        color: var(--color-brand);
+    }
+  }
+
+  & h1{
+    margin-bottom: 4rem;
+    font: var(--title);
+  }
+}
+
+ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}

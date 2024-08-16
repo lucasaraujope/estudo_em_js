@@ -12,7 +12,7 @@
 
     /*COLORS*/
     --color-brand: #CA3884;
-    -color-brand-hover: #A52C6B;
+    --color-brand-hover: #A52C6B;
     --color-danger: #C93847;
 
     /*CONTENT COLORS*/
@@ -37,4 +37,18 @@ body{
     background-color: var(--background-primary);
     font: var(--paragrapgh);
     color: var(--content-primary);
+
+    width: 627px;
+
+    margin: 0 auto;
+    padding-block: 25px 137px;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none; 
+    margin-bottom: .75rem;  
 }
